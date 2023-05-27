@@ -9,5 +9,5 @@ spec:
     app: meetup-may-aks
   ports:
     - protocol: TCP
-      port: 80
+      port: 5000
       targetPort: 5000
