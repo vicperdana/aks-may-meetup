@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: meetup-may-aks
+  namespace: namespace-workflow-1685160983555
+spec:
+  type: LoadBalancer
+  selector:
+    app: meetup-may-aks
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
