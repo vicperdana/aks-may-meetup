@@ -1,0 +1,68 @@
+# Default values for aks-may-meetup-app.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+title: "aksmaymeetupapp"
+global: # required by Az Marketplace offers
+  azure:
+    images:
+      aksmaymeetupapp:
+        registry: aiacraa22.azurecr.io
+        image: image-workflow-1685161792398
+        digest: sha256:833cf312a309bbc046e3c13981d3057f5b395073de4637c610828ce6f4ee1cd1
+
+
+replicaCount: 1
+
+nameSpace: aksmaymeetupapp
+
+containerPort: 8080
+appLabel: aksmaymeetupapp
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  annotations: {}
+  type: LoadBalancer
+  port: 8080
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+labels: {}

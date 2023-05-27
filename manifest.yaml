@@ -1,0 +1,21 @@
+applicationName: com.nonmicrosoft.meetupapp
+publisher: "Azure Melbourne Nights Publisher"
+description: "A test package for the marketplace CNAB structure with existing cluster only."
+version: 1.0.0
+restrictions:
+  minCores: 2
+  minNodes: 1
+  minKubernetesVersion: 1.21
+  requireGpuNodes: False
+  openShiftAllowed: True
+  nodeType: Linux
+  newClusterRequired: False
+helmChart: "./charts"
+clusterArmTemplate: "./cluster-deployment.json"
+uiDefinition: "./createUIDefinition.json"
+registryServer: "aiacraa22.azurecr.io"
+extensionRegistrationParameters:
+  defaultScope: "cluster"
+  namespace: "aksmaymeetupapp"
+  
+  

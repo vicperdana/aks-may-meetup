@@ -1,0 +1,79 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterResourceName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Managed Cluster resource."
+            }
+        },
+        "extensionResourceName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the extension."
+            }
+        },
+
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "location"
+            }
+        },        
+        "app-title": {
+            "type": "string",
+            "metadata": {
+                "description": "App Title"
+            }
+        },
+        "app-clusterDNS": {
+            "type": "string",
+            "metadata": {
+                "description": "Enter AKS DNS"
+            }
+        },
+        "app-NameSpace": {
+            "type": "string",
+            "defaultValue": "default",
+            "metadata": {
+                "description": "Enter NameSpace"
+            }
+        }
+    },
+    "variables": {
+        "plan-name": "DONOTMODIFY",
+        "plan-publisher": "DONOTMODIFY",
+        "plan-offerID": "DONOTMODIFY",
+        "releaseTrain": "DONOTMODIFY",
+        "clusterExtensionTypeName": "DONOTMODIFY"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.KubernetesConfiguration/extensions",
+            "apiVersion": "2022-11-01",
+            "name": "[parameters('extensionResourceName')]",
+            "properties": {
+                "extensionType": "[variables('clusterExtensionTypeName')]",
+                "autoUpgradeMinorVersion": true,
+                "releaseTrain": "[variables('releaseTrain')]",
+                "configurationSettings": {
+                    "title": "[parameters('app-title')]",
+                    "clusterDNS": "[parameters('app-clusterDNS')]",
+                    "nameSpace": "[parameters('app-NameSpace')]"
+                }
+            },
+            "plan": {
+                "name": "[variables('plan-name')]",
+                "publisher": "[variables('plan-publisher')]",
+                "product": "[variables('plan-offerID')]"
+            },
+            "scope": "[concat('Microsoft.ContainerService/managedClusters/', parameters('clusterResourceName'))]"
+        }
+    ],
+    "outputs": {     "location": {
+        "type": "string",
+        "value": "[parameters('location')]"
+        }
+    }
+}

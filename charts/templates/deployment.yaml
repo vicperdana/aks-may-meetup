@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aksmaymeetupapp
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: aksmaymeetupapp
+  template:
+    metadata:
+      labels:
+        app: aksmaymeetupapp
+        azure-extensions-usage-release-identifier: {{.Release.Name}}
+        {{- range $key, $value := .Values.labels }}
+        {{ $key }}: {{ $value | quote }}
+        {{- end }}
+    spec:
+      containers:
+        - name: aksmaymeetupapp
+          image: "{{ .Values.global.azure.images.aksmaymeetupapp.registry }}/{{ .Values.global.azure.images.aksmaymeetupapp.image }}@{{ .Values.global.azure.images.aksmaymeetupapp.digest }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.containerPort }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
