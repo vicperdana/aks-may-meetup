@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: meetup-may-aks
-  namespace: namespace-workflow-1685160983555
+  namespace: namespace-workflow-1685161792398
 spec:
   type: LoadBalancer
   selector:
