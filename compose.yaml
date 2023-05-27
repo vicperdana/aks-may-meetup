@@ -1,5 +1,0 @@
-volumes:
-    - ./server:/app
-    - /app/obj/
-    - /app/bin/
-    - /app/out/
