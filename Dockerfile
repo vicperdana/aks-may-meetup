@@ -27,5 +27,7 @@ FROM base AS final
 RUN apt-get -y update; apt-get -y install curl
 WORKDIR /source
 COPY --from=publish /source .
+ENV PORT 5000
+EXPOSE 5000
 
-ENTRYPOINT dotnet meetupwebapp.dll
+ENTRYPOINT dotnet meetupwebapp.dll --urls "http://*:5000"
