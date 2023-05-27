@@ -13,10 +13,10 @@ RUN arch=$TARGETARCH \
 WORKDIR /source
 
 # caches restore result by copying csproj file separately
-COPY meetupwebapp.csproj .
-RUN dotnet restore "./meetupwebapp.csproj"
+COPY meetupwebapp/meetupwebapp/meetupwebapp.csproj .
+RUN dotnet restore "meetupwebapp.csproj"
 # build and publish app and libraries
-COPY . .
+COPY meetupwebapp/meetupwebapp .
 WORKDIR /source/.
 RUN dotnet build "meetupwebapp.csproj" -c Release -o /source/build --no-restore
 
