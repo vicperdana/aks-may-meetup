@@ -1,0 +1,7 @@
+namePrefix: production-
+namespace: myapp-backend
+resources:
+  - ../../base
+patchesStrategicMerge:
+  - deployment.yaml
+  - service.yaml
