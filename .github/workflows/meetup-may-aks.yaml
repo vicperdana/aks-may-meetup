@@ -3,8 +3,6 @@ name: meetup-may-aks
   push:
         branches:
           - 'releases/**'
-            #- main
-    workflow_dispatch: {}
 env:
     ACR_RESOURCE_GROUP: rg-azopenai
     AZURE_CONTAINER_REGISTRY: aiacraa22
