@@ -1,12 +1,18 @@
-﻿<Properties StartupConfiguration="{AC2E490A-5F1D-47C6-BA50-AA8F7C124067}|Default">
+﻿<Properties StartupConfiguration="{EC143A97-5B56-47EF-B7A7-02A67416B858}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="meetupwebapp/Program.cs">
+    <Files>
+      <File FileName="meetupwebapp/Program.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="meetupwebapp" expanded="True" selected="True">
-            <Node name="meetupwebapp" expanded="True" />
+          <Node name="meetupwebapp">
+            <Node name="meetupwebapp" expanded="True">
+              <Node name="wwwroot" expanded="True" />
+              <Node name="Program.cs" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
