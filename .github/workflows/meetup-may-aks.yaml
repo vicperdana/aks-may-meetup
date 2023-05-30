@@ -1,8 +1,9 @@
 name: meetup-may-aks
 "on":
-    push:
+  push:
         branches:
-            - main
+          - 'releases/**'
+            #- main
     workflow_dispatch: {}
 env:
     ACR_RESOURCE_GROUP: rg-azopenai
