@@ -2,7 +2,7 @@ name: testmeetup
 "on":
     push:
         branches:
-            - main
+            - releases/*
     workflow_dispatch: {}
 env:
     ACR_RESOURCE_GROUP: rg-azopenai
